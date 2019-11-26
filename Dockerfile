@@ -6,6 +6,3 @@ FROM httpd:2.4
 
 # Copy testing pages to image
 COPY web/ /usr/local/apache2/htdocs/
-
-USER root
-
