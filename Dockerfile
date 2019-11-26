@@ -11,10 +11,12 @@ COPY web/ /usr/local/apache2/htdocs/
 RUN sed -i 's/Listen 80/Listen 8080/g' /usr/local/apache2/conf/httpd.conf 
 
 # Change apache owner to daemon
-RUN chown -R daemon: /usr/local/apache2
+RUN chown -R daemon: /usr/local/apache2 && chmod 773 /usr/local/apache2/logs
 
 EXPOSE 8080
 
 USER daemon
+
+RUN chmod 773 /usr/local/apache2/logs
 
 CMD ["httpd-foreground"]
