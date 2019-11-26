@@ -16,3 +16,5 @@ RUN chown -R daemon: /usr/local/apache2
 EXPOSE 8080
 
 USER daemon
+
+CMD ["httpd-foreground"]
