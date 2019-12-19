@@ -13,10 +13,13 @@ RUN sed -i 's/Listen 80/Listen 8080/g' /usr/local/apache2/conf/httpd.conf
 # Change apache owner to daemon
 RUN chown -R daemon: /usr/local/apache2 && chmod 773 /usr/local/apache2/logs
 
+# Install tools for debug
+RUN apt-get update && apt-get install -y procps vim
+
 EXPOSE 8080
 
-USER daemon
-
 RUN chmod 773 /usr/local/apache2/logs
+
+USER daemon
 
 CMD ["httpd-foreground"]
